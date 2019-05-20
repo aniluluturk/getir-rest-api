@@ -1,17 +1,34 @@
 //During the test the env variable is set to test
 process.env.NODE_ENV = 'test';
-process.env.PORT = 3000;
+process.env.PORT = 8081;
 
 //Require the dev-dependencies
 let chai = require('chai');
 let chaiHttp = require('chai-http');
-let server = require('../index');
+let server = require('../app');
 let should = chai.should();
+let config = require('config');
+let mongoose = require('mongoose');
+
+//retrieve config vars
+const uri = config.get('app.mongoose.uri');
 
 chai.use(chaiHttp);
 
 describe('Records Test', function () {
     this.timeout(120000);
+    before(function (done) {
+        mongoose.connect(uri, {useNewUrlParser: true}, function (error) {
+            console.log('conn ready:  ' + mongoose.connection.readyState);
+            mongoose.connection.readyState.should.be.eql(1);
+        }).catch(function () {
+            console.warn('cannot connect to the db, tests will fail');
+        })
+        .then(() => {
+            done();
+        });
+    });
+
     describe('/GET /', function () {
         this.timeout(5000);
         it('should get the welcome page', (done) => {
@@ -206,6 +223,12 @@ describe('Records Test', function () {
                     records.length.should.be.eql(0);
                     done();
                 });
+        });
+    });
+
+    after(function (done) {
+        mongoose.disconnect().then(() => {
+            done();
         });
     });
 

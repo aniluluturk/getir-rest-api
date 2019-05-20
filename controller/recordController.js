@@ -1,9 +1,17 @@
 // Import model
-Record = require('../model/recordModel');
-ResponseTypes = require('../model/responseTypes');
+let Record = require('../model/recordModel');
+let ResponseTypes = require('../model/responseTypes');
+let mongoose = require('mongoose');
 
 // return result by start/end date filter and minCount/maxCount filter
 exports.routes = function (req, res) {
+    if (mongoose.connection.readyState !== 1) {
+        res.status(400).json({
+            code: ResponseTypes.failByConnectionError,
+            msg: "Cannot establish db connection",
+        });
+        return;
+    }
     Record.get(req.body, function (err, records) {
         if (err) {
             //return error result
@@ -24,6 +32,13 @@ exports.routes = function (req, res) {
 
 //return by id
 exports.view = function (req, res) {
+    if (mongoose.connection.readyState !== 1) {
+        res.status(400).json({
+            code: ResponseTypes.failByConnectionError,
+            msg: "Cannot establish db connection",
+        });
+        return;
+    }
     Record.findById(req.params.id, function (err, record) {
         if (err) {
             //return error result

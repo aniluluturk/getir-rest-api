@@ -21,11 +21,15 @@ app.use(bodyParser.json());
 // Import routes
 let apiRoutes = require("./api/routes");
 
-
+if (process.env.NODE_ENV !== 'test') {
 // Connect to Mongoose and set connection variable
-mongoose.connect(uri, { useNewUrlParser: true });
+    mongoose.connect(uri, {useNewUrlParser: true}, function (err) {
+        if (err) {
+            console.log(err);
+        }
+    });
+}
 
-let db = mongoose.connection;
 // Setup server port
 let port = process.env.PORT || 8080;
 

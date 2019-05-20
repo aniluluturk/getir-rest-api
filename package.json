@@ -2,10 +2,10 @@
   "name": "getir-record-app",
   "version": "1.0.0",
   "description": "getir record rest api",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "mocha --exit",
-    "start": "node index.js"
+    "start": "node app.js"
   },
   "keywords": [
     "api",

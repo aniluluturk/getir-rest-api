@@ -7,6 +7,10 @@ responseTypes = {
     "fail" :  {
         code: 1,
         msg: undefined,
+    },
+    "failByConnectionError": {
+        code: 2,
+        msg: "mongodb connection lost",
     }
 };
 
