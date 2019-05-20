@@ -55,6 +55,17 @@ Example Response
 
 #### Records endpoint
 
+Instead of dealing with a variety of error cases in this endpoint, 
+I disregarded invalid data and used internal default values for these parameters.
+
+e.g.
+
+- if `minCount` is not given, code will fetch only by considering `maxCount` key (lower bound will not be applied)
+
+- if `startDate` is not given, records that satisfy `endDate` bounds will be returned (again, no lower bounds)
+
+- if non-number values are passed for `minCount` or `maxCount` parameters, default values of smallest integer for `minCount` and largest integer for `maxCount` will be returned. That is, if no bounds are given or if they are all invalid, **all records** will be returned.
+
 Example request
 
 `POST /records`
