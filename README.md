@@ -64,7 +64,8 @@ e.g.
 
 - if `startDate` is not given, records that satisfy `endDate` bounds will be returned (again, no lower bounds)
 
-- if non-number values are passed for `minCount` or `maxCount` parameters, default values of smallest integer for `minCount` and largest integer for `maxCount` will be returned. That is, if no bounds are given or if they are all invalid, **all records** will be returned.
+- if non-number values are passed for `minCount` or `maxCount` parameters, default values of smallest integer for `minCount` and largest integer for `maxCount` will be assumed. 
+That is, if no bounds are given or if they are all invalid, **all records** will be returned.
 
 Example request
 
