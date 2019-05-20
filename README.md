@@ -32,6 +32,8 @@ Running tests with mocha
 Example request
 
 `GET /records/58adc5172a84567a19698e1e`
+
+```
 {
     "code": 0,
     "msg": "success",
@@ -47,8 +49,6 @@ Example request
         "createdAt": "2016-10-18T00:53:27.182Z"
     }
 }
-```
-
 ```
 
 #### Records endpoint
