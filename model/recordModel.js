@@ -87,6 +87,14 @@ module.exports.get = function (params, callback, limit) {
                 },
                 {
                     "$match": matchParams
+                },
+                {
+                    "$project": {
+                        key: 1,
+                        createdAt: 1,
+                        totalCount: 1,
+                        _id: 0,
+                    }
                 }
             ]
         ).exec((err, data) => {
