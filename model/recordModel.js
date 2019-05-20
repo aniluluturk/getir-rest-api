@@ -13,7 +13,6 @@ var recordSchema = mongoose.Schema({
         required: true
     },
     counts: Array,
-    phone: String,
     createdAt: {
         type: Date,
         default: Date.now
