@@ -1,0 +1,31 @@
+{
+  "name": "getir-record-app",
+  "version": "1.0.0",
+  "description": "getir record rest api",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --exit",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "api",
+    "restful",
+    "json"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "config": "^3.1.0",
+    "express": "^4.17.0",
+    "lodash": "^4.17.11",
+    "mongoose": "^5.5.9"
+  },
+  "devDependencies": {
+    "jest": "^24.8.0",
+    "mocha": "^6.1.4",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "should": "^13.2.3"
+  }
+}
