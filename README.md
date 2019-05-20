@@ -33,6 +33,8 @@ Example request
 
 `GET /records/58adc5172a84567a19698e1e`
 
+Example Response
+
 ```
 {
     "code": 0,
